@@ -1,66 +1,31 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createAction } from '@reduxjs/toolkit'
 
 const topics = createSlice({
     consoleLog: console.log('topicsSlice is running'),
     name: 'topics',
     initialState: {
-            topics: {
-                '123': {
-                    id: '123',
-                    name: 'example topic',
-                    icon: 'icon url',
-                    quizIds: ['456']
-                }
-            },
-        quizzes: {
-            quizzes: {
-                '456': {
-                    id: '456',
-                    topicId: '123',
-                    name: 'quiz for example topic',
-                    cardIds: ['789', '101', '102']
-                }
-            }
+        topics: {
+            quizIds: []
         },
-        cards: {
-            cards: {
-                '789': {
-                    id: '789',
-                    front: 'front text',
-                    back: 'back text'
-                },
-                '101': {
-                    id: '101',
-                    front: 'front text',
-                    back: 'back text'
-                },
-                '102': {
-                    id: '102',
-                    front: 'front text',
-                    back: 'back text'
-                },
-            }
-        }
     },
     reducers: {
-        addTopic: (state, action) => {
+        addTopic(state, action) {
+            console.log('addTopic is firing off')
             state.topics = {
-                topics: {
-                    [action.payload.id]: action.payload,
-                    quizIds: []
-                }
+                name: action.payload.name,
+                [action.payload.id]: action.payload,
+                quizIds: [],
+                icon: action.payload.icon
             }
         }
     }
 })
 
-// use selector
-export const selectTopics = state => state.topics.topics
+console.log('topics', topics)
 
-// this is going to be an action creator
-export const addTopic = (state, action) => {
-    console.log("addTopic is running", addTopic)
-    state.topics.topics = {[action.payload.topics.id]: action.payload }
-}
+// use selector
+export const selectTopics = state => state.topics
+
+export const { addTopic } = topics.actions
 
 export default topics.reducer
