@@ -26,7 +26,7 @@ export default function NewTopicForm() {
       name: name,
       id: uuidv4(),
       icon: icon,
-      quizIds: []
+      quizIds: [],
     }))
     history.push(ROUTES.topicsRoute());
   };

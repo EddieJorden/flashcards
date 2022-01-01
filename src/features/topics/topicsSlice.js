@@ -4,19 +4,24 @@ const topics = createSlice({
     consoleLog: console.log('topicsSlice is running'),
     name: 'topics',
     initialState: {
-        topics: {
-            quizIds: []
-        },
+        topics: {}
     },
     reducers: {
         addTopic(state, action) {
             console.log('addTopic is firing off')
             state.topics = {
-                name: action.payload.name,
-                [action.payload.id]: action.payload,
-                quizIds: [],
-                icon: action.payload.icon
+                [action.payload.id]: {
+                    id: action.payload.id,
+                    name: action.payload.name,
+                    icon: action.payload.icon,
+                    quizIds: [],
+                }
             }
+        },
+        addQuizzIds(state, action) {
+            console.log('action in topicSlice is firing off', action)
+            state.topics.topicId[action.payload.topicId].quizIds.push(action.payload.topicId)
+            // state.topics[action.payload.topicId].quizIds.push(action.payload.quizId)
         }
     }
 })
@@ -24,8 +29,10 @@ const topics = createSlice({
 console.log('topics', topics)
 
 // use selector
-export const selectTopics = state => state.topics
+export const selectTopics = state => state.topics.topics
 
 export const { addTopic } = topics.actions
+
+export const { addQuizzIds } = topics.actions
 
 export default topics.reducer
