@@ -4,9 +4,8 @@ import { v4 as uuidv4 } from "uuid";
 import ROUTES from "../app/routes";
 import { ALL_ICONS } from "../data/icons";
 import { addTopic } from "../features/topics/topicsSlice"
-import { useDispatch, useSelector } from 'react-redux'
-import store from '../app/store'
-
+import { useDispatch } from 'react-redux';
+// import { useSelect } from "react"
 
 export default function NewTopicForm() {
   const [name, setName] = useState("");
@@ -26,7 +25,6 @@ export default function NewTopicForm() {
       name: name,
       id: uuidv4(),
       icon: icon,
-      quizIds: [],
     }))
     history.push(ROUTES.topicsRoute());
   };

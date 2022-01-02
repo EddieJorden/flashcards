@@ -1,10 +1,11 @@
-import { createSlice, createAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 const topics = createSlice({
     consoleLog: console.log('topicsSlice is running'),
     name: 'topics',
     initialState: {
-        topics: {}
+        topics: {
+        }
     },
     reducers: {
         addTopic(state, action) {
@@ -18,10 +19,9 @@ const topics = createSlice({
                 }
             }
         },
-        addQuizzIds(state, action) {
+        addQuizIds(state, action) {
             console.log('action in topicSlice is firing off', action)
-            state.topics.topicId[action.payload.topicId].quizIds.push(action.payload.topicId)
-            // state.topics[action.payload.topicId].quizIds.push(action.payload.quizId)
+            state.topics[action.payload.topicId].quizIds.push(action.payload.id)
         }
     }
 })
@@ -33,6 +33,6 @@ export const selectTopics = state => state.topics.topics
 
 export const { addTopic } = topics.actions
 
-export const { addQuizzIds } = topics.actions
+export const { addQuizIds } = topics.actions
 
 export default topics.reducer
