@@ -1,11 +1,19 @@
-export const cardsSlice = createSlice({
+import { createSlice } from "@reduxjs/toolkit" 
+
+const cards = createSlice({
     name: 'cards',
     initialState: {
         cards: {}
     },
-    reducer(state, action) {
-        addCard((state, action) => {
-            state.cards = state.cards.push({[action.payload.id]: action.payload)
-        })
+    reducers: {
+        addCard: (state, action) => {
+            state.cards = {[action.payload.id]: action.payload}
+        }
     }
 })
+
+export const { addCard } = cards.actions;
+
+export const selectCards = (state) => state.cards.cards
+
+export default cards.reducer

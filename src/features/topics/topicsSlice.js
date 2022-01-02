@@ -17,7 +17,6 @@ const topics = createSlice({
                 icon: icon,
                 quizIds: [],
             }
-            
         },
         addQuizIds(state, action) {
             const { topicId, quizId } = action.payload;
@@ -34,8 +33,6 @@ console.log('topics', topics)
 // use selector
 export const selectTopics = state => state.topics.topics
 
-export const { addTopic } = topics.actions
-
-export const { addQuizIds } = topics.actions
+export const { addTopic, addQuizIds } = topics.actions
 
 export default topics.reducer
