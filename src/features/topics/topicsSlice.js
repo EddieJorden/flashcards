@@ -4,12 +4,13 @@ const topics = createSlice({
     consoleLog: console.log('topicsSlice is running'),
     name: 'topics',
     initialState: {
-        topics: {}
+        topics: {
+        }
     },
     reducers: {
         addTopic(state, action) {
             const { id, name, icon } = action.payload
-            console.log('addTopic is firing off')
+            console.log('addTopic is firing off', action.payload)
             
             state.topics[id] = {
                 id: id,
@@ -20,7 +21,7 @@ const topics = createSlice({
         },
         addQuizIds(state, action) {
             const { topicId, quizId } = action.payload;
-            if (topicId) {
+            if (!topicId) {
                 return;
             }
             state.topics[topicId].quizIds.push(quizId)
