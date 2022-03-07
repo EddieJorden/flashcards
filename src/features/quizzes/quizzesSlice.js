@@ -15,18 +15,14 @@ const quizzes = createSlice({
     }
 });
 
-// dispatch actions here
 export const addQuizForTopicIdThunk = (payload) => {
     const { topicId, id} = payload
-    console.log('payload from thunk action creator', payload);
     return (dispatch) => {
-        // dispatch multiple actions here
         dispatch(addQuizIds({ topicId: topicId, quizId: id}))
         dispatch(quizzes.actions.addQuiz(payload))
     };
 };
 
-// console.log('addQuizForTopicIdThunk', addQuizForTopicIdThunk())
 export const selectQuiz = (state) => state.quizzes.quizzes;
 
 export const { addQuiz } = () => quizzes.actions
