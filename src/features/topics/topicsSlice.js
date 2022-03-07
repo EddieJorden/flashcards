@@ -1,17 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const topics = createSlice({
-    consoleLog: console.log('topicsSlice is running'),
     name: 'topics',
     initialState: {
-        topics: {
-        }
+        topics: {}
     },
     reducers: {
         addTopic(state, action) {
-            const { id, name, icon } = action.payload
-            console.log('addTopic is firing off', action.payload)
-            
+            const { id, name, icon } = action.payload;
             state.topics[id] = {
                 id: id,
                 name: name,
@@ -27,13 +23,8 @@ const topics = createSlice({
             state.topics[topicId].quizIds.push(quizId)
         }
     }
-})
+});
 
-console.log('topics', topics)
-
-// use selector
-export const selectTopics = state => state.topics.topics
-
-export const { addTopic, addQuizIds } = topics.actions
-
-export default topics.reducer
+export const selectTopics = state => state.topics.topics;
+export const { addTopic, addQuizIds } = topics.actions;
+export default topics.reducer;
