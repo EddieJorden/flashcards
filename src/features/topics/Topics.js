@@ -13,7 +13,7 @@ export default function Topics() {
         <ul className="topics-list">
           {Object.values(topics).map((topic) => (
             <li className="topic" key={topic.id}>
-              <Link to={ROUTES.topicRoute(topic.id)} className="topic-link">
+              <Link to={ROUTES.newQuizRoute()} className="topic-link">
                 <div className="topic-container">
                   <img src={topic.icon} alt="" />
                   <div className="text-content">
