@@ -16,7 +16,7 @@ import ROUTES from "./routes";
 
 export default function App() {
   return (
-    <Router>
+    <Router basename="https://eddiejorden.github.io/flashcards/">
       <nav>
         <ul>
           <li>
